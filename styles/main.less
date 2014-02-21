@@ -1,16 +1,15 @@
+
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@import "../bower_components/bootstrap/less/theme.less";
+
+//override bootstrap fonts and colors
 @import "fonts.less";
 @import "colors.less";
 @import "elements.less";
 
-/*
- * Base structure
- */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-	font-family: @text;
 	color: @label;
-	padding-top: 50px;
+	//padding-top: 50px;
 	background: url('../images/bg_transparent.gif');
 }
 
@@ -33,7 +32,7 @@ body {
 
 .card {
 	.rounded(5px);
-	.drop-shadow(0, 5px, 8px, 0.05);
+	.drop-shadow(0, 5px, 8px, 0, 0.05);
 	height: 100%;
 	background-color: white;
 }
@@ -45,19 +44,166 @@ body {
 }
 
 
-@media (min-width: 1600px) {
+@media (min-width: @screen-xs + 1) and (max-width: @screen-xs + (@screen-sm - @screen-xs) / 2) {
+   .card-container{
+  	height: 350px;
+  }
+}
+
+@media (min-width: @screen-xs + (@screen-sm - @screen-xs) / 2 + 1) and (max-width: @screen-sm - 1) {
+   .card-container{
+  	height: 450px;
+  }
+}
+
+@media (min-width: @screen-sm + (@screen-md - @screen-sm)/ 2 + 1) and (max-width: @screen-md - 1) {
+   .card-container{
+  	height: 390px;
+  }
+}
+
+@media (min-width: @screen-lg + 400) {
   .card-container{
   	height: 320px;
   }
 }
 
-@media (min-width: 2000px) {
+@media (min-width: @screen-lg + 700) {
   .card-container {
-  	height: 350px;
+  	height: 370px;
   }
+}
 
- .navbar-default {
- 	background-color: black;
- }
+
+@media (min-width: @screen-lg + 1000) {
+  .card-container {
+  	height: 450px;
+  }
+}
+
+.navbar-shadow {
+	border: none;
+	.drop-shadow(0, 2px, 5px, 0, 0.2);
+}
+
+.navbar-bubble {
+	//.rounded(50%);
+	.border-radius(0, 55px, 55px, 0);
+    .step-gradient(@stops: lighten(@navbar-default-bg, 10%) 0, @navbar-default-bg 50px, darken(@navbar-default-bg, 2%) 75px;);
+	width: 110px;
+	height: 75px; 
+	position: absolute;
+	//top: -25px;
+	left: 60px;
+	.drop-shadow(0, 14px, 10px, -10px, 0.1);
+}
+
+.app-icon {
+	background: url('../images/Midas.svg') no-repeat;
+    background-position: 50% 70%;
+    background-size: 58%;	
+    border: 0;
+    &:hover {
+    	.drop-shadow(0, 20px, 10px, -15px, 0.2);
+    }
+	outline: none;
+}
+
+.logo {
+    width: 50px;
+	background: url('../images/logo.svg') no-repeat right 60%;
+	background-size: 65%;
+}
+
+.nav {
+	margin-left: 135px;
+	li {
+		padding-right: 20px;
+	}
+}
+
+.navbar-tools {
+	//position: relative;
+	float: right;
+	margin-right: @navbar-padding-horizontal - 10;
+	li {
+		height: 50px;
+		padding: 0 3px;
+		font-size: 22px;
+		&:hover {
+			background-color: @navbar-default-link-hover-bg;
+		}
+	}
+}
+
+.profile-photo {
+	margin: 10px;
+	width: 30px;
+	height: 30px;
+	background: url('../images/Profile.jpg');
+	background-size: 30px;
+	background-clip: padding-box;
+	border: 15px;
+	border-radius: 15px;
+}
+
+#globalnav {
+	background: #3a3a3a url('../images/globalnav_bg_transparent.gif');	
+	padding-left: 80px;
+}
+
+.app-container {
+	text-align: center;	
+	padding: 35px 20px;
+	a {
+		color: darken(@label, 15%);
+	}
+	img {
+		height: 70px;
+		width: 70px;
+		opacity: 0.8;
+	}
+	&:hover {
+		background: #333 url('../images/globalnav_bg_transparent.gif');
+		background-clip: padding-box;
+		a {
+			color: @label;
+			text-decoration: none;
+		}
+		img{
+			opacity: 1;
+		}
+	}
 
 }
+
+#manage {
+	position: relative;
+	float: right;
+	margin-right: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

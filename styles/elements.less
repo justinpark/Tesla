@@ -22,6 +22,16 @@
                                  @start);
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
 }
+@white: #fff;
+.step-gradient (@origin: top, @fallback: @white, @stops){
+    background-color: @fallback;
+    background: -webkit-linear-gradient(@origin, @stops) @fallback no-repeat;
+    background:    -moz-linear-gradient(@origin, @stops) @fallback no-repeat;
+    background:    -ms-linear-gradient(@origin, @stops) @fallback no-repeat;
+    background:      -o-linear-gradient(@origin, @stops) @fallback no-repeat;
+    background:         linear-gradient(@origin, @stops) @fallback no-repeat;
+}
+
 .bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
   background: @color;
   background: -webkit-gradient(linear,
@@ -45,10 +55,10 @@
   border-right: solid 1px @right-color;
   border-bottom: solid 1px @bottom-color;
 }
-.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
-  -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-  -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-  box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @spread: 2px, @alpha: 0.1) {
+  -webkit-box-shadow: @x-axis @y-axis @blur @spread rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: @x-axis @y-axis @blur @spread rgba(0, 0, 0, @alpha);
+  box-shadow: @x-axis @y-axis @blur @spread rgba(0, 0, 0, @alpha);
 }
 .rounded(@radius: 2px) {
   -webkit-border-radius: @radius;
