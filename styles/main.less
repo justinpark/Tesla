@@ -6,6 +6,7 @@
 @import "fonts.less";
 @import "colors.less";
 @import "elements.less";
+@import "dimensions.less";
 
 html, body {
 	color: @label;
@@ -17,16 +18,18 @@ html, body {
  * Main content
  */
 
-#wrap {
-	min-height: 100%;
-	height: auto;
-	margin-bottom: -50px;
+
+
+#timestamp {
+	padding: 20px 0 10px 0;
+	font-size: 1.2em;
+	color: darken(@label, 30%);
+	text-align: right;
+	text-shadow: 0px 1px white;		
 }
 
-@navbar-height: 42px;
-
 .main {
-  	padding: 100px 15px;
+  	padding: 0 10px 20px 10px;
 }
 
 .main .page-header {
@@ -143,27 +146,32 @@ html, body {
 	background-size: 65%;
 }
 
-.nav {
+.navbar-left {
 	margin-left: 95px;
-/*	li {
-		padding-right: 20px;
-	}
-*/
 }
 
-.navbar-tools {
+.navbar-right {
 	//position: relative;
-	float: right;
-	margin-right: @navbar-padding-horizontal - 25;
-	li {
+	//float: right;
+	//margin-right: @navbar-padding-horizontal - 10;
+	> li {
 		height: 42px;
-		padding: 0 3px;
-		font-size: 18px;
+		padding: 0 2px;
+		font-size: 1.2em;
+		margin-top: -1px;
+	}
+}
+
+.menu-item {
+	> li > a {
+		text-shadow: 0px 1px white;	
 		&:hover {
-			background-color: @navbar-default-link-hover-bg;
+			.gradient(@navbar-default-bg, darken(@navbar-default-bg, 15%), darken(@navbar-default-bg, 5%));
+			text-shadow: 0px 1px @navbar-default-link-color;	
 		}
 	}
 }
+
 
 .profile-photo {
 	margin: 10px;
@@ -197,7 +205,9 @@ html, body {
 		opacity: 0.7;
 	}
 	&:hover {
-		background: #2c2c2c url('../images/globalnav_bg_transparent.gif');
+		@media (min-width: @screen-md) {
+			background: #2c2c2c url('../images/globalnav_bg_transparent.gif');
+		}
 		background-clip: padding-box;
 		a {
 			color: @label;
