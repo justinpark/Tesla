@@ -18,12 +18,11 @@ html, body {
  * Main content
  */
 
-
-
 #timestamp {
-	padding: 20px 0 10px 0;
-	font-size: 1.2em;
-	color: darken(@label, 30%);
+	padding: 75px 10px 10px 10px;
+	font-size: 0.9em;
+	color: @label;
+	font-style: italic;
 	text-align: right;
 	text-shadow: 0px 1px white;		
 }
@@ -38,7 +37,6 @@ html, body {
 
 .card-container {
 	padding: 7px;
-//	height: 280px;
 	height: 100%;
 }
 
@@ -55,64 +53,11 @@ html, body {
 }
 
 #credit {
-	font-style: italic;
-	font-size: 0.8em;
-	text-shadow: 0px 1px white;	
-	padding-left: 10px;
+	#timestamp;
+	padding-top: 0;
+	text-align: left;
 }
 
-/*
-#footer{
-	position: absolute;
-	bottom: 0;
-	font-style: italic;
-	font-size: 0.8em;
-	text-shadow: 0px 1px white;
-	background-color: lighten(@navbar-default-bg, 10%);
-	width: 100%;
-	padding: 20px;
-	height: 50px;
-}
-*/
-
-/*
-@media (min-width: @screen-xs + 1) and (max-width: @screen-xs + (@screen-sm - @screen-xs) / 2) {
-   .card-container{
-  	height: 350px;
-  }
-}
-
-@media (min-width: @screen-xs + (@screen-sm - @screen-xs) / 2 + 1) and (max-width: @screen-sm - 1) {
-   .card-container{
-  	height: 450px;
-  }
-}
-
-@media (min-width: @screen-sm + (@screen-md - @screen-sm)/ 2 + 1) and (max-width: @screen-md - 1) {
-   .card-container{
-  	height: 390px;
-  }
-}
-
-@media (min-width: @screen-lg + 400) {
-  .card-container{
-  	height: 320px;
-  }
-}
-
-@media (min-width: @screen-lg + 700) {
-  .card-container {
-  	height: 370px;
-  }
-}
-
-
-@media (min-width: @screen-lg + 1000) {
-  .card-container {
-  	height: 450px;
-  }
-}
-*/
 .navbar-shadow {
 	border: none;
 	.drop-shadow(0, 2px, 5px, 0, 0.2);
@@ -146,17 +91,13 @@ html, body {
 	background-size: 65%;
 }
 
-.navbar-left {
+.nav-left {
 	margin-left: 95px;
 }
 
-.navbar-right {
-	//position: relative;
-	//float: right;
-	//margin-right: @navbar-padding-horizontal - 10;
+.pull-right {
 	> li {
 		height: 42px;
-		padding: 0 2px;
 		font-size: 1.2em;
 		margin-top: -1px;
 	}
@@ -164,21 +105,86 @@ html, body {
 
 .menu-item {
 	> li > a {
-		text-shadow: 0px 1px white;	
+		text-shadow: 0px 1px lighten(@navbar-default-bg, 10%);	 
 		&:hover {
-			.gradient(@navbar-default-bg, darken(@navbar-default-bg, 15%), darken(@navbar-default-bg, 5%));
-			text-shadow: 0px 1px @navbar-default-link-color;	
+			text-shadow: 0px 1px lighten(@navbar-default-bg, 20%);	
+		}
+	}
+	> .open > .dropdown-toggle{
+		&,
+		&:hover {
+			.step-gradient(@stops: lighten(@navbar-default-bg, 10%) 0, @navbar-default-bg 42px, darken(@navbar-default-bg, 2%) 60px;);
+			//.gradient(@navbar-default-bg, darken(@navbar-default-bg, 15%), darken(@navbar-default-bg, 1%)) !important;
+			color: @navbar-default-link-hover-color !important;
+			text-shadow: 0px 1px lighten(@navbar-default-bg, 20%) !important;
+	    }
+	}
+	> .active > a {
+		&,
+		&:hover,
+		&:focus {
+			.gradient(@navbar-default-bg, darken(@navbar-default-bg, 15%), darken(@navbar-default-bg, 1%)) !important;
+			text-shadow: 0px 1px darken(@navbar-default-bg, 20%) !important;
+        }
+	}	
+}
+
+.navbar .nav > li > .dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 40px;
+  display: inline-block;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid @dropdown-bg;
+  border-left: 10px solid transparent;
+  border-bottom-color: @dropdown-bg;
+  content: '';
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+	border-radius: 5px !important;
+	left: -25px;
+	padding-left: 25px;
+	width: 700px;
+}
+
+#payments {
+	width: 220px;
+}
+
+.dropdown-menu-list {
+	.list-unstyled;
+	padding: 10px;
+	> li {
+		margin: 0.8em 0;		
+	}
+	a {
+		color: @dropdown-link-color;
+		&:hover {
+			color: @dropdown-link-hover-color;
+			text-decoration: none;
 		}
 	}
 }
 
+.dropdown-header {
+	font-size: @font-size-base;
+	color: darken(@dropdown-link-color, 25%);
+	font-style: italic;
+	font-weight: bold;
+	padding: 0.2em 0;
+}
 
 .profile-photo {
-	margin: 10px;
-	width: 26px;
-	height: 26px;
+	margin: 10px 8px;
+	width: 25px;
+	height: 25px;
 	background: url('../images/Profile.jpg');
-	background-size: 26px;
+	background-size: 25px;
 	background-clip: padding-box;
 	border: 15px;
 	border-radius: 15px;
